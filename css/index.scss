@@ -1,0 +1,288 @@
+@function px2rem($px, $rem: 75) {
+    @return $px / $rem * 1rem;
+}
+
+@mixin whb($w, $h, $b) {
+    width: $w;
+    height: $h;
+    background-color: $b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+:root {
+    background-color: #F0F2F1;
+}
+
+@mixin whb($w, $h, $b) {
+    width: $w;
+    height: $h;
+    background-color: $b;
+}
+
+//单行文本省略号
+@mixin single-line($width: 10em) {
+    width: $width;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+html,
+body,
+.app {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+
+    header {
+        position: relative;
+        @include whb(100%, px2rem(73), white);
+
+        &>i {
+            font-size: px2rem(40);
+            line-height: px2rem(73);
+            position: absolute;
+            left: 0;
+            color: #373737;
+        }
+
+        h4 {
+            font-size: px2rem(34);
+            line-height: px2rem(73);
+            text-align: center;
+        }
+
+        border:px2rem(2) solid #E5E5E5;
+    }
+
+    main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        .user {
+            @include whb(100%, px2rem(68), white);
+            padding: px2rem(9) px2rem(50);
+            justify-content: space-between;
+            box-sizing: border-box;
+            display: flex;
+            margin-bottom: px2rem(18);
+
+            &>p {
+                font-size: px2rem(18);
+                color: #A9A9A9;
+                line-height: px2rem(50);
+            }
+
+            button {
+                border: none;
+                outline: none;
+                @include whb(px2rem(96), px2rem(46), #9A0000);
+                color: white;
+            }
+        }
+
+        .content{
+            flex: 1;
+            overflow: auto;
+            &>div{
+                .commodity {
+                    @include whb(100, px2rem(244), white);
+                    border-bottom: px2rem(2);
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: px2rem(15) px2rem(25);
+                    box-sizing: border-box;
+                    border-bottom:px2rem(2) solid #E5E5E5;
+                    position: relative;
+                    .del{
+                        @include whb(px2rem(34), px2rem(34), #DCDCDC);
+                        font-size: px2rem(34);
+                        text-align: center;
+                        line-height: px2rem(34);
+                        color:white;
+                        position: absolute;
+                        right:px2rem(20);
+                        top:px2rem(20);
+                    }
+                    .checked{
+                        background-color:red;
+                    }
+                    &>div {
+                        @include whb(px2rem(32), px2rem(32), none);
+                        border: px2rem(2) solid #BCBCBC;
+                        border-radius: 50%;
+                       
+        
+                        &>i {
+                            display: block;
+                            @include whb(px2rem(32), px2rem(32), none);
+                            font-size: px2rem(30);
+                            color:white;
+                        }
+                    }
+        
+                    &>dl {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        flex: 1;
+                        margin-left:px2rem(27);
+        
+                        dt {
+                            margin-right:px2rem(31);
+                            img {
+                                display: block;
+                                @include whb(px2rem(214), px2rem(214), none);
+                            }
+                        }
+        
+                        dd {
+                            display: flex;
+                            flex-direction: column;
+                            flex: 1;
+        
+                            .name {
+                                font-size: px2rem(30);
+                                margin-bottom:px2rem(24);
+        
+                            }
+        
+                            .referral {
+                                font-size: px2rem(20);
+                                color: #999999;
+                                margin-bottom:px2rem(60);
+                            }
+        
+                            &>div {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+        
+                                .price {
+                                    font-size: px2rem(24);
+                                    color: #8A0000;
+                                }
+        
+                                &>div {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                    border: px2rem(2) solid #CCCCCC;
+                                    @include whb(px2rem(118), px2rem(36), white);
+        
+                                    .cut,
+                                    .plus {
+                                        @include whb(px2rem(34), px2rem(36), white);
+                                        font-size: px2rem(18);
+                                        line-height: px2rem(36);
+                                        text-align: center;
+                                        color: #959595;
+                                        outline: none;
+                                        border: none;
+                                    }
+        
+                                    .num {
+                                        @include whb(px2rem(46), px2rem(36), white);
+                                        line-height: px2rem(36);
+                                        text-align: center;
+                                        font-size: px2rem(20);
+                                        border-left: px2rem(2) solid #CCCCCC;
+                                        border-right: px2rem(2) solid #CCCCCC;
+                                    }
+        
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .settles{
+            font-size: px2rem(26);
+            @include whb(100%, px2rem(102),white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .checked{
+                background-color:red;
+            }
+            &>.anniu {
+                @include whb(px2rem(32), px2rem(32), none);
+                border: px2rem(2) solid #BCBCBC;
+                border-radius: 50%;
+                margin:0 px2rem(26);
+               
+
+                &>i {
+                    display: block;
+                    @include whb(px2rem(32), px2rem(32), none);
+                    font-size: px2rem(30);
+                    color:white;
+                   
+                }
+            }
+            &>p{
+                flex: 1;
+                margin-left:px2rem(30);
+                &>span{
+                    width: px2rem(120);
+                    color:#9A0000;
+                }
+            }
+            .settle{
+                @include whb(px2rem(200), px2rem(100), #9A0000);
+                color:white;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                .sum{
+                    width: px2rem(50);
+                }
+            }
+
+        }
+    }
+
+    footer{
+        width: px2rem(750);
+        height: px2rem(80);
+        background-color: #fff;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        padding-top: px2rem(10);
+        .yellow{
+            color:yellow;
+        }
+        dl {
+            dt {
+                i {
+                    width: px2rem(50);
+                    height: px2rem(50);
+                    display: block;
+                    font-size: px2rem(50);
+                    margin: 0 auto;
+                }
+            }
+    
+            dd {
+                font-size: px2rem(24);
+                text-align: center;
+            }
+        }
+    
+    }
+}

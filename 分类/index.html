@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./fonts1/iconfont.css">
+    <script src="../js/data.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <header>
+            <div class="icon iconfont icon-zuojiantou-01" id="fanhui"></div>
+            <div id="sousuo"><i class="icon iconfont icon-fangdajing"></i><input type="text" placeholder="银河GALAXY">
+            </div>
+        </header>
+        <main>
+            <div class="left">
+                <ul id="left">
+                    <li>自行车</li>
+                </ul>
+            </div>
+            <div class="right" id="right">
+               
+
+                </div>
+           
+        </main>
+        <footer>
+            <dl>
+                <dt><i class="icon iconfont icon-shouye"></i></dt>
+                <dd>
+                    首页
+                </dd>
+            </dl>
+            <dl>
+                <dt><i class="icon iconfont icon-wodedingdan"></i></dt>
+                <dd>
+                    <a href="./分类/index.html">分类</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt><i class="icon iconfont icon-gouwuche"></i></dt>
+                <dd>
+                    <a href="../index.html">购物车</a>
+                </dd>
+                
+            </dl>
+            <dl>
+                <dt><i class="icon iconfont icon-wode"></i></dt>
+                <dd>
+                    我的
+                </dd>
+            </dl>
+        </footer>
+    </div>
+    <script>
+        var htmls = document.documentElement;
+        var timer = null;
+        htmls.style.fontSize = htmls.clientWidth / 10 + "px";
+        window.onresize = function () {
+            if (timer) {
+                clearInterval(timer);
+                timer = null;
+            }
+            timer = setTimeout(function () {
+                htmls.style.fontSize = htmls.clientWidth / 10 + "px";
+            }, 200);
+        }
+    </script>
+    <script>
+        var left = document.getElementById('left');
+        var right = document.getElementById('right');
+       
+       
+
+
+        function xuanran_l() {
+            var html = '';
+            for (var i = 0; i < data0.length; i++) {
+                html += `<li data-id${i}>${data0[i]}</li>`
+            };
+            left.innerHTML = html
+        }
+        xuanran_l();
+
+        function xuanran_r(data){
+            
+            var html = '';
+            html += `<div><img src="./image/1.png" alt="">
+                <h4>${data.title}</h4>
+                <div class="content">`
+            for(var s = 0; s < data.content.length; s ++){
+                html += `<dl>
+                        <dt>
+                            <img src="${data.content[s].img}" alt="">
+                        </dt>
+                        <dd>
+                            <a href="../商品详情/index.html">${data.content[s].name}</a></dt>
+                    </dl>`
+            }
+            html += `</div>`
+            right.innerHTML = html;
+            
+        }
+        xuanran_r(data1[0]);
+        
+        var li_list = document.querySelectorAll('li');
+        for(var i = 0; i < li_list.length; i++){
+           
+            (function(ind){
+                
+                li_list[ind].addEventListener('click',function(){
+                    for(var j = 0; j < li_list.length; j++){
+                        li_list[j].classList.remove('color');
+                    }
+                    xuanran_r(data1[ind]);    
+                    li_list[ind].classList.add('color');  
+                })
+            })(i)
+        }
+
+
+    </script>
+</body>
+
+</html>
